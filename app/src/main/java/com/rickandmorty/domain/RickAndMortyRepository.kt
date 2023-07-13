@@ -6,11 +6,7 @@ import com.rickandmorty.data.remote.RickAndMortyApi
 class RickAndMortyRepository(private val api: RickAndMortyApi) {
 
     suspend fun loadCharactersFromApi(): List<CharacterApiResultResponse> {
-        try {
-            return api.getCharacters().result
-        } catch (e: Exception) {
-            throw e
-        }
-    }
+        return api.getCharacters().results
 
+    }
 }

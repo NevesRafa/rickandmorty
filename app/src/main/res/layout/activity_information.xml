@@ -1,8 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".presentation.information.InformationActivity">
+
+    <ImageView
+        android:id="@+id/character_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/rick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/information_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/creepster"
+        android:text="Name:"
+        android:textColor="#02AEC2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/character_image" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/creepster"
+        android:text="Rick Sanchez"
+        android:textColor="#75D776"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/information_name"
+        app:layout_constraintStart_toEndOf="@id/information_name"
+        app:layout_constraintTop_toTopOf="@id/information_name" />
+
+    <TextView
+        android:id="@+id/information_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/creepster"
+        android:text="Status:"
+        android:textColor="#02AEC2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_name" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/creepster"
+        android:text="Alive"
+        android:textColor="#75D776"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/information_status"
+        app:layout_constraintStart_toEndOf="@id/information_status"
+        app:layout_constraintTop_toTopOf="@id/information_status" />
+
+    <TextView
+        android:id="@+id/information_species"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/creepster"
+        android:text="Species:"
+        android:textColor="#02AEC2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_status" />
+
+    <TextView
+        android:id="@+id/species"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/creepster"
+        android:text="Human"
+        android:textColor="#75D776"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/information_species"
+        app:layout_constraintStart_toEndOf="@id/information_species"
+        app:layout_constraintTop_toTopOf="@id/information_species" />
+
+    <TextView
+        android:id="@+id/information_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/creepster"
+        android:text="Type:"
+        android:textColor="#02AEC2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_species" />
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/creepster"
+        android:text="Genetic experiment"
+        android:textColor="#75D776"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/information_type"
+        app:layout_constraintStart_toEndOf="@id/information_type"
+        app:layout_constraintTop_toTopOf="@id/information_type" />
+
+    <TextView
+        android:id="@+id/information_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/creepster"
+        android:text="Gender:"
+        android:textColor="#02AEC2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_type" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/creepster"
+        android:text="Male"
+        android:textColor="#75D776"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/information_gender"
+        app:layout_constraintStart_toEndOf="@id/information_gender"
+        app:layout_constraintTop_toTopOf="@id/information_gender" />
+
+    <TextView
+        android:id="@+id/information_origin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/creepster"
+        android:text="Origin:"
+        android:textColor="#02AEC2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_gender" />
+
+    <TextView
+        android:id="@+id/origin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/creepster"
+        android:text="Earth (C-137)"
+        android:textColor="#75D776"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/information_origin"
+        app:layout_constraintStart_toEndOf="@id/information_origin"
+        app:layout_constraintTop_toTopOf="@id/information_origin" />
+
+    <TextView
+        android:id="@+id/information_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/creepster"
+        android:text="Location:"
+        android:textColor="#02AEC2"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_origin" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24sp"
+        android:fontFamily="@font/creepster"
+        android:text="Citadel of Ricks"
+        android:textColor="#75D776"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/information_location"
+        app:layout_constraintStart_toEndOf="@id/information_location"
+        app:layout_constraintTop_toTopOf="@id/information_location" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

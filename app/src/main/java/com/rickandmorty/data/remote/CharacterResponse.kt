@@ -2,7 +2,7 @@ package com.rickandmorty.data.remote
 
 data class CharacterApiResponse(
     // val info: CharacterApiInfoResponse,
-    val result: List<CharacterApiResultResponse>
+    val results: List<CharacterApiResultResponse>
 )
 
 
