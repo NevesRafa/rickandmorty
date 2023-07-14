@@ -8,9 +8,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterListViewModel(val repository: RickAndMortyRepository) : ViewModel() {
+class CharacterListViewModel(private val repository: RickAndMortyRepository) : ViewModel() {
 
     val loadStateLiveData = MutableLiveData<CharacterListState>()
+    val loadMoreStateLiveData = MutableLiveData<CharacterListState>()
 
     fun loadPokeList() {
         viewModelScope.launch {
@@ -28,4 +29,23 @@ class CharacterListViewModel(val repository: RickAndMortyRepository) : ViewModel
         }
     }
 
+    fun loadMore() {
+        if (loadMoreStateLiveData.value is CharacterListState.Loading) {
+            return
+        }
+
+        viewModelScope.launch {
+            loadMoreStateLiveData.postValue(CharacterListState.Loading)
+
+            try {
+                val moreItems = withContext(Dispatchers.IO) {
+                    repository.loadMore()
+                }
+
+                loadMoreStateLiveData.postValue(CharacterListState.Success(moreItems))
+            } catch (error: Exception) {
+                loadMoreStateLiveData.postValue(CharacterListState.Error(error.message))
+            }
+        }
+    }
 }

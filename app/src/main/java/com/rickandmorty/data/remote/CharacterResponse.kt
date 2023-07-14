@@ -5,14 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CharacterApiResponse(
-    // val info: CharacterApiInfoResponse,
     val results: List<CharacterApiResultResponse>
 ) : Parcelable
-
-//data class CharacterApiInfoResponse(
-//    @SerializedName("next") val nextPager: Int,
-//    @SerializedName("prev") val previousPager: Int,
-//)
 
 @Parcelize
 data class CharacterApiResultResponse(

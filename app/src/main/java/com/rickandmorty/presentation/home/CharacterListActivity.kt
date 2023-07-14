@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.rickandmorty.data.remote.CharacterApiResultResponse
 import com.rickandmorty.databinding.ActivityCharacterListBinding
 import com.rickandmorty.presentation.information.InformationActivity
@@ -34,6 +35,13 @@ class CharacterListActivity : AppCompatActivity() {
                 is CharacterListState.Error -> {}
             }
         }
+        viewModel.loadMoreStateLiveData.observe(this) { state ->
+            when (state) {
+                is CharacterListState.Loading -> {}
+                is CharacterListState.Success -> showResponse(state.result)
+                is CharacterListState.Error -> {}
+            }
+        }
     }
 
     private fun showResponse(result: List<CharacterApiResultResponse>) {
@@ -53,16 +61,15 @@ class CharacterListActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(this@CharacterListActivity, 2, GridLayoutManager.VERTICAL, false)
             adapter = this@CharacterListActivity.adapter
 
-//            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
-//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                    if (!recyclerView.canScrollVertically(1) && !this@CharacterListActivity.adapter.isFiltering()) {
-//                        viewModel.loadMore()
-//                    }
-//
-//                    super.onScrolled(recyclerView, dx, dy)
-//                }
-//            })
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    if (!recyclerView.canScrollVertically(1)) {
+                        viewModel.loadMore()
+                    }
+                    super.onScrolled(recyclerView, dx, dy)
+                }
+            })
         }
     }
 }

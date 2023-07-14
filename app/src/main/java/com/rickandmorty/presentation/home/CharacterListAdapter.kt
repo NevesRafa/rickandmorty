@@ -24,12 +24,9 @@ class CharacterListAdapter(private val onCharacterClick: (CharacterApiResultResp
     override fun getItemCount() = dataset.size
 
     fun addCharacterList(list: List<CharacterApiResultResponse>) {
-        dataset.clear()
         dataset.addAll(list)
         notifyDataSetChanged()
     }
-
-
 }
 
 class CharacterListViewHolder(private val binding: ItemCharacterListBinding) : RecyclerView.ViewHolder(binding.root) {
