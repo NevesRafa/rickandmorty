@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/light_black"
     tools:context=".presentation.home.CharacterListActivity">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/creepster"
         android:text="@string/homeScreen_title"
-        android:textColor="#02AEC2"
+        android:textColor="@color/turquoise"
         android:textSize="46sp"
         app:layout_constraintBottom_toTopOf="@id/subtitle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/creepster"
         android:text="@string/homeScreen_subtitle"
-        android:textColor="#75D776"
+        android:textColor="@color/light_green"
         android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@id/recyclerview_characters"
         app:layout_constraintEnd_toEndOf="parent"
