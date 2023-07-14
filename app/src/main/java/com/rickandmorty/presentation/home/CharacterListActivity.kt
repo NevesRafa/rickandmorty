@@ -45,6 +45,7 @@ class CharacterListActivity : AppCompatActivity() {
     private fun setupList() {
         adapter = CharacterListAdapter { character ->
             val intent = Intent(this, InformationActivity::class.java)
+            intent.putExtra(InformationActivity.EXTRA_CHARACTER_INFORMATION, character)
             startActivity(intent)
         }
         binding.recyclerviewCharacters.apply {

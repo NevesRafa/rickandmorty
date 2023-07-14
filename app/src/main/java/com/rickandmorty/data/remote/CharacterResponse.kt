@@ -1,16 +1,20 @@
 package com.rickandmorty.data.remote
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class CharacterApiResponse(
     // val info: CharacterApiInfoResponse,
     val results: List<CharacterApiResultResponse>
-)
-
+) : Parcelable
 
 //data class CharacterApiInfoResponse(
 //    @SerializedName("next") val nextPager: Int,
 //    @SerializedName("prev") val previousPager: Int,
 //)
 
+@Parcelize
 data class CharacterApiResultResponse(
     val id: Int,
     val name: String,
@@ -21,8 +25,10 @@ data class CharacterApiResultResponse(
     val origin: OriginResponse,
     val location: LocationResponse,
     val image: String
-)
+) : Parcelable
 
-data class OriginResponse(val name: String)
+@Parcelize
+data class OriginResponse(val name: String) : Parcelable
 
-data class LocationResponse(val name: String)
+@Parcelize
+data class LocationResponse(val name: String) : Parcelable
