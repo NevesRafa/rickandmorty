@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.infoScreen
+package com.rickandmorty.presentation.details
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,19 +6,19 @@ import androidx.core.content.ContextCompat
 import coil.load
 import com.rickandmorty.R
 import com.rickandmorty.data.remote.CharacterApiResultResponse
-import com.rickandmorty.databinding.ActivityInformationBinding
+import com.rickandmorty.databinding.ActivityDetailsBinding
 
-class InformationActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_CHARACTER_INFORMATION = "extra.character.information"
     }
 
-    lateinit var binding: ActivityInformationBinding
+    lateinit var binding: ActivityDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityInformationBinding.inflate(layoutInflater)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         intent.getParcelableExtra<CharacterApiResultResponse>(EXTRA_CHARACTER_INFORMATION)?.let {

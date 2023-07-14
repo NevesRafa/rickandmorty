@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.characterScreen
+package com.rickandmorty.presentation.character_list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,6 +17,7 @@ class CharacterListViewModel(private val repository: RickAndMortyRepository) : V
     fun loadPokeList() {
         viewModelScope.launch {
             loadStateLiveData.postValue(CharacterListState.Loading)
+            delay(3000)
 
             try {
                 val characterList = withContext(Dispatchers.IO) {

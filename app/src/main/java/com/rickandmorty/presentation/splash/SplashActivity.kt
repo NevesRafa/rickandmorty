@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.splashScreen
+package com.rickandmorty.presentation.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.rickandmorty.databinding.ActivitySplashBinding
-import com.rickandmorty.presentation.characterScreen.CharacterListActivity
+import com.rickandmorty.presentation.character_list.CharacterListActivity
 
 class SplashActivity : AppCompatActivity() {
 

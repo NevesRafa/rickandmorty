@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.characterScreen
+package com.rickandmorty.presentation.character_list
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.rickandmorty.databinding.ActivityCharacterListBinding
 import com.rickandmorty.internal.extension.gone
 import com.rickandmorty.internal.extension.setErrorStyle
 import com.rickandmorty.internal.extension.visible
-import com.rickandmorty.presentation.infoScreen.InformationActivity
+import com.rickandmorty.presentation.details.DetailsActivity
 import org.koin.android.ext.android.inject
 
 class CharacterListActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class CharacterListActivity : AppCompatActivity() {
     private fun setupViewModel() {
         viewModel.loadStateLiveData.observe(this) { state ->
             when (state) {
-                is CharacterListState.Loading -> {}
+                is CharacterListState.Loading -> showLoading()
                 is CharacterListState.Success -> showResponse(state.result)
                 is CharacterListState.Error -> showError(state.errorMessage)
             }
@@ -51,20 +51,34 @@ class CharacterListActivity : AppCompatActivity() {
     }
 
     private fun showResponse(result: List<CharacterApiResultResponse>) {
+        hideLoading()
         hideLoadingMore()
         adapter.addCharacterList(result)
     }
 
     private fun showError(errorMessage: String?) {
+        hideLoading()
         hideLoadingMore()
         Snackbar.make(binding.root, getString(R.string.error_message, errorMessage), Snackbar.LENGTH_LONG)
             .setErrorStyle()
             .show()
     }
 
+    private fun showLoading() {
+        binding.recyclerviewCharacters.gone()
+        binding.subtitle.gone()
+        binding.loading.visible()
+    }
+
     private fun showLoadingMore() {
         binding.recyclerviewCharacters.scrollToPosition(adapter.itemCount - 1)
         binding.loadingBottom.visible()
+    }
+
+    private fun hideLoading() {
+        binding.loading.gone()
+        binding.subtitle.visible()
+        binding.recyclerviewCharacters.visible()
     }
 
     private fun hideLoadingMore() {
@@ -73,8 +87,8 @@ class CharacterListActivity : AppCompatActivity() {
 
     private fun setupList() {
         adapter = CharacterListAdapter { character ->
-            val intent = Intent(this, InformationActivity::class.java)
-            intent.putExtra(InformationActivity.EXTRA_CHARACTER_INFORMATION, character)
+            val intent = Intent(this, DetailsActivity::class.java)
+            intent.putExtra(DetailsActivity.EXTRA_CHARACTER_INFORMATION, character)
             startActivity(intent)
         }
         binding.recyclerviewCharacters.apply {
