@@ -1,13 +1,18 @@
-package com.rickandmorty.presentation.home
+package com.rickandmorty.presentation.characterScreen
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.rickandmorty.R
 import com.rickandmorty.data.remote.CharacterApiResultResponse
 import com.rickandmorty.databinding.ActivityCharacterListBinding
-import com.rickandmorty.presentation.information.InformationActivity
+import com.rickandmorty.internal.extension.gone
+import com.rickandmorty.internal.extension.setErrorStyle
+import com.rickandmorty.internal.extension.visible
+import com.rickandmorty.presentation.infoScreen.InformationActivity
 import org.koin.android.ext.android.inject
 
 class CharacterListActivity : AppCompatActivity() {
@@ -24,6 +29,7 @@ class CharacterListActivity : AppCompatActivity() {
 
         setupViewModel()
         setupList()
+
         viewModel.loadPokeList()
     }
 
@@ -32,22 +38,37 @@ class CharacterListActivity : AppCompatActivity() {
             when (state) {
                 is CharacterListState.Loading -> {}
                 is CharacterListState.Success -> showResponse(state.result)
-                is CharacterListState.Error -> {}
+                is CharacterListState.Error -> showError(state.errorMessage)
             }
         }
         viewModel.loadMoreStateLiveData.observe(this) { state ->
             when (state) {
-                is CharacterListState.Loading -> {}
+                is CharacterListState.Loading -> showLoadingMore()
                 is CharacterListState.Success -> showResponse(state.result)
-                is CharacterListState.Error -> {}
+                is CharacterListState.Error -> showError(state.errorMessage)
             }
         }
     }
 
     private fun showResponse(result: List<CharacterApiResultResponse>) {
-        // hideLoading()
-        //hideLoadingMore()
+        hideLoadingMore()
         adapter.addCharacterList(result)
+    }
+
+    private fun showError(errorMessage: String?) {
+        hideLoadingMore()
+        Snackbar.make(binding.root, getString(R.string.error_message, errorMessage), Snackbar.LENGTH_LONG)
+            .setErrorStyle()
+            .show()
+    }
+
+    private fun showLoadingMore() {
+        binding.recyclerviewCharacters.scrollToPosition(adapter.itemCount - 1)
+        binding.loadingBottom.visible()
+    }
+
+    private fun hideLoadingMore() {
+        binding.loadingBottom.gone()
     }
 
     private fun setupList() {

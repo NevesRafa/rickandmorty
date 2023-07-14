@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.home
+package com.rickandmorty.presentation.characterScreen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

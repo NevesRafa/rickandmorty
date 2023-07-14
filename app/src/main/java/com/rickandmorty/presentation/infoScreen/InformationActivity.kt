@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.information
+package com.rickandmorty.presentation.infoScreen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

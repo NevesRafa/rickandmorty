@@ -1,10 +1,11 @@
-package com.rickandmorty.presentation.home
+package com.rickandmorty.presentation.characterScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rickandmorty.domain.RickAndMortyRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -36,7 +37,7 @@ class CharacterListViewModel(private val repository: RickAndMortyRepository) : V
 
         viewModelScope.launch {
             loadMoreStateLiveData.postValue(CharacterListState.Loading)
-
+            delay(2000)
             try {
                 val moreItems = withContext(Dispatchers.IO) {
                     repository.loadMore()

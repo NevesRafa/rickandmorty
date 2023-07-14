@@ -2,7 +2,7 @@ package com.rickandmorty.internal
 
 import com.rickandmorty.data.remote.RickAndMortyApi
 import com.rickandmorty.domain.RickAndMortyRepository
-import com.rickandmorty.presentation.home.CharacterListViewModel
+import com.rickandmorty.presentation.characterScreen.CharacterListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit

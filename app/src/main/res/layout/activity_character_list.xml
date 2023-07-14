@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_black"
-    tools:context=".presentation.home.CharacterListActivity">
+    tools:context=".presentation.characterScreen.CharacterListActivity">
 
     <TextView
         android:id="@+id/title"
@@ -48,5 +48,32 @@
         app:spanCount="2"
         tools:listitem="@layout/item_character_list" />
 
+    <LinearLayout
+        android:id="@+id/loading_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingVertical="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:indeterminate="true"
+            app:indicatorColor="@color/turquoise" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/creepster"
+            android:text="@string/loading"
+            android:textColor="@color/light_green"
+            android:textSize="13sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

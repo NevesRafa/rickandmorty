@@ -1,4 +1,4 @@
-package com.rickandmorty.internal
+package com.rickandmorty.internal.extension
 
 import android.view.View
 

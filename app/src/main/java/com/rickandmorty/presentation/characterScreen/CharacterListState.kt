@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.home
+package com.rickandmorty.presentation.characterScreen
 
 import com.rickandmorty.data.remote.CharacterApiResultResponse
 

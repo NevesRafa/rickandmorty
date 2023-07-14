@@ -2,4 +2,6 @@
     <string name="app_name">Rick And Morty</string>
     <string name="homeScreen_title">Rick And Morty</string>
     <string name="homeScreen_subtitle">Characters</string>
+    <string name="loading">loading</string>
+    <string name="error_message">Erro: %s</string>
 </resources>

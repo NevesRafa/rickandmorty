@@ -1,4 +1,4 @@
-package com.rickandmorty.presentation.splash
+package com.rickandmorty.presentation.splashScreen
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.rickandmorty.databinding.ActivitySplashBinding
-import com.rickandmorty.presentation.home.CharacterListActivity
+import com.rickandmorty.presentation.characterScreen.CharacterListActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun splashScreenDuration() {
-        val splashScreenDuration = 3000L // 3 segundos
+        val splashScreenDuration = 3500L
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@SplashActivity, CharacterListActivity::class.java)
             startActivity(intent)
